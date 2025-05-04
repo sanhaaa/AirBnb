@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, MapPin, Calendar, Users } from 'lucide-react';
 import popularLocations from '../data/locations';
+import properties from '../data/properties';
 
 const SearchBar = () => {
   const navigate = useNavigate();
@@ -19,10 +20,22 @@ const SearchBar = () => {
     
     // Build query string
     const params = new URLSearchParams();
-    if (searchParams.location) params.append('location', searchParams.location);
+    
+    // Add location if provided, normalize and clean up the input
+    if (searchParams.location) {
+      const formattedLocation = searchParams.location
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, ' '); // Remove extra spaces
+      
+      // Don't validate against existing locations - let the search page handle filtering
+      params.append('location', formattedLocation);
+    }
+
+    // Add dates and guests
     if (searchParams.checkIn) params.append('checkIn', searchParams.checkIn);
     if (searchParams.checkOut) params.append('checkOut', searchParams.checkOut);
-    if (searchParams.guests > 0) params.append('guests', searchParams.guests.toString());
+    params.append('guests', Math.max(1, Math.min(16, searchParams.guests)).toString());
     
     navigate(`/search?${params.toString()}`);
   };
@@ -41,10 +54,14 @@ const SearchBar = () => {
   };
   
   const filteredLocations = searchParams.location
-    ? popularLocations.filter(location => 
-        location.city.toLowerCase().includes(searchParams.location.toLowerCase()) ||
-        location.state.toLowerCase().includes(searchParams.location.toLowerCase())
-      )
+    ? popularLocations.filter(location => {
+        const searchTerm = searchParams.location.toLowerCase();
+        return (
+          location.city.toLowerCase().includes(searchTerm) ||
+          location.state.toLowerCase().includes(searchTerm) ||
+          location.country.toLowerCase().includes(searchTerm)
+        );
+      })
     : popularLocations.slice(0, 5);
   
   return (

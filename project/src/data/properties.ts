@@ -568,6 +568,181 @@ const properties: Property[] = [
       '2025-01-01', '2025-01-02', '2025-01-03', '2025-01-04',
       '2025-01-10', '2025-01-11', '2025-01-12'
     ]
+  },
+  {
+    id: '7',
+    title: 'Beachfront Villa in North Goa',
+    description: 'Direct beach access from this stunning villa in Anjuna. Features a private infinity pool, garden, and panoramic sea views.',
+    type: 'Entire home',
+    images: [
+      {
+        id: '7-1',
+        url: 'https://images.pexels.com/photos/32870/pexels-photo.jpg',
+        alt: 'Beachfront villa view',
+        isPrimary: true
+      },
+      {
+        id: '7-2',
+        url: 'https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg',
+        alt: 'Infinity pool'
+      },
+      {
+        id: '7-3',
+        url: 'https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg',
+        alt: 'Garden area'
+      }
+    ],
+    vrTour: {
+      enabled: true,
+      panoramas: [
+        'https://images.pexels.com/photos/32870/pexels-photo.jpg',
+        'https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg',
+        'https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg'
+      ]
+    },
+    price: 25000,
+    currency: 'INR',
+    location: {
+      city: 'Anjuna',
+      state: 'Goa',
+      country: 'India',
+      lat: 15.5744,
+      lng: 73.7400
+    },
+    host: {
+      id: 'h7',
+      name: 'Maya Desai',
+      avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg',
+      isSuperHost: true,
+      responseRate: 98,
+      responseTime: 'within hours',
+      joinDate: 'August 2019',
+      totalListings: 2
+    },
+    amenities: [
+      { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
+      { id: 'a2', name: 'Air conditioning', icon: 'wind', category: 'basic' },
+      { id: 'a4', name: 'Pool', icon: 'pool', category: 'features' },
+      { id: 'a5', name: 'Beach access', icon: 'beach', category: 'features' }
+    ],
+    maxGuests: 8,
+    bedrooms: 4,
+    beds: 5,
+    baths: 4,
+    rating: 4.9,
+    reviewCount: 32,
+    reviews: [
+      {
+        id: 'r8',
+        userId: 'u8',
+        userName: 'James W',
+        userAvatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
+        rating: 5,
+        comment: 'Exceptional beachfront location with amazing sunset views. The pool and garden are stunning.',
+        date: '2023-12-01'
+      }
+    ],
+    hasWifi: true,
+    hasAC: true,
+    hasKitchen: true,
+    hasWasher: true,
+    hasParking: true,
+    hasPool: true,
+    instantBook: false,
+    cancelPolicy: 'strict',
+    minStay: 3,
+    availableDates: [
+      '2025-01-01', '2025-01-02', '2025-01-03',
+      '2025-01-15', '2025-01-16', '2025-01-17'
+    ]
+  },
+  {
+    id: '8',
+    title: 'Royal Heritage Haveli in Udaipur',
+    description: 'Stay in a converted 18th-century palace with lake views, traditional architecture, and modern amenities.',
+    type: 'Entire home',
+    images: [
+      {
+        id: '8-1',
+        url: 'https://images.pexels.com/photos/3209049/pexels-photo-3209049.jpeg',
+        alt: 'Palace exterior',
+        isPrimary: true
+      },
+      {
+        id: '8-2',
+        url: 'https://images.pexels.com/photos/3209045/pexels-photo-3209045.jpeg',
+        alt: 'Traditional room'
+      },
+      {
+        id: '8-3',
+        url: 'https://images.pexels.com/photos/3201921/pexels-photo-3201921.jpeg',
+        alt: 'Lake view'
+      }
+    ],
+    vrTour: {
+      enabled: true,
+      panoramas: [
+        'https://images.pexels.com/photos/3209049/pexels-photo-3209049.jpeg',
+        'https://images.pexels.com/photos/3209045/pexels-photo-3209045.jpeg',
+        'https://images.pexels.com/photos/3201921/pexels-photo-3201921.jpeg'
+      ]
+    },
+    price: 35000,
+    currency: 'INR',
+    location: {
+      city: 'Udaipur',
+      state: 'Rajasthan',
+      country: 'India',
+      lat: 24.5854,
+      lng: 73.7125
+    },
+    host: {
+      id: 'h8',
+      name: 'Raj Singh Mewar',
+      avatar: 'https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg',
+      isSuperHost: true,
+      responseRate: 100,
+      responseTime: 'within an hour',
+      joinDate: 'March 2017',
+      totalListings: 3
+    },
+    amenities: [
+      { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
+      { id: 'a2', name: 'Air conditioning', icon: 'wind', category: 'basic' },
+      { id: 'a3', name: 'Restaurant', icon: 'utensils', category: 'features' },
+      { id: 'a14', name: 'Lake view', icon: 'water', category: 'features' },
+      { id: 'a15', name: 'Heritage tours', icon: 'landmark', category: 'features' }
+    ],
+    maxGuests: 6,
+    bedrooms: 3,
+    beds: 3,
+    baths: 3,
+    rating: 4.9,
+    reviewCount: 45,
+    reviews: [
+      {
+        id: 'r9',
+        userId: 'u9',
+        userName: 'Sophie L',
+        userAvatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
+        rating: 5,
+        comment: 'A truly royal experience! The architecture is breathtaking and the service is impeccable.',
+        date: '2023-11-28'
+      }
+    ],
+    hasWifi: true,
+    hasAC: true,
+    hasKitchen: false,
+    hasWasher: true,
+    hasParking: true,
+    hasPool: true,
+    instantBook: false,
+    cancelPolicy: 'strict',
+    minStay: 2,
+    availableDates: [
+      '2025-01-05', '2025-01-06', '2025-01-07',
+      '2025-01-20', '2025-01-21', '2025-01-22'
+    ]
   }
 ];
 

@@ -1,15 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, GlobeIcon, MessageCircle } from 'lucide-react';
+import { Search, GlobeIcon } from 'lucide-react';
 import UserMenu from './UserMenu';
 
 const Navbar = () => {
-  const [showChatbot, setShowChatbot] = useState(false);
-  
-  const handleChatbotToggle = () => {
-    setShowChatbot(prev => !prev);
-  };
-  
 
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();

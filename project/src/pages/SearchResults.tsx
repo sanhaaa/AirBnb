@@ -35,13 +35,31 @@ const SearchResults = () => {
     
     // Filter by location if provided
     if (location) {
-      results = results.filter(property => 
-        property.location.city.toLowerCase().includes(location.toLowerCase()) ||
-        property.location.state.toLowerCase().includes(location.toLowerCase()) ||
-        property.location.country.toLowerCase().includes(location.toLowerCase())
-      );
+      const searchTerms = location.toLowerCase().split(',').map(term => term.trim());
+      
+      results = results.filter(property => {
+        // Check if any search term matches city, state, or country
+        return searchTerms.every(term =>
+          property.location.city.toLowerCase().includes(term) ||
+          property.location.state.toLowerCase().includes(term) ||
+          property.location.country.toLowerCase().includes(term)
+        );
+      });
     }
     
+    // Filter by guest count if provided
+    if (guests) {
+      results = results.filter(property => property.maxGuests >= guests);
+    }
+    
+    // Filter by dates if provided
+    if (checkIn && checkOut) {
+      results = results.filter(property => {
+        // Add date filtering logic here if needed
+        return true;
+      });
+    }
+
     // Filter by property type
     if (selectedFilters.propertyType.length > 0) {
       results = results.filter(property => 
@@ -77,7 +95,7 @@ const SearchResults = () => {
     
     // Update state with filtered results
     setFilteredProperties(results);
-  }, [location, selectedFilters]);
+  }, [location, checkIn, checkOut, guests, selectedFilters]);
   
   const toggleFilter = (category: string, value: string) => {
     setSelectedFilters(prev => {
