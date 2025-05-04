@@ -72,15 +72,7 @@ const Chatbot = () => {
 
   return (
     <>
-      <div className="bnbee-header">
-        <img src="/src/assets/logo.svg" alt="BnBee Logo" className="bnbee-logo" />
-        <h1>Welcome to BnBee</h1>
-        <p>
-          Your ultimate travel assistant! BnBee can help you plan trips, find travel hacks, discover the best food spots, 
-          book cheap flights, and even create personalized travel itineraries. Experience destinations virtually with our VR feature!
-        </p>
-      </div>
-
+     
       {isOpen && (
         <div className="chatbot-modal">
           <div className="chatbot-header">

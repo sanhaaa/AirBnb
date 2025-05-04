@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import CategoryFilter from '../components/CategoryFilter';
 import PropertyCard from '../components/PropertyCard';
 import SearchBar from '../components/SearchBar';
 import properties from '../data/properties';
-import { MapPin, ChevronDown } from 'lucide-react';
+import { MapPin, ChevronDown, MessageCircle } from 'lucide-react';
 import Chatbot from '../components/Chatbot';
 
 const HomePage = () => {
@@ -65,10 +64,20 @@ const HomePage = () => {
         </div>
       </section>
       
+      {/* Chatbot Button */}
+      <button
+        className="fixed bottom-6 right-6 bg-airbnb-red text-white z-2 rounded-full p-4 shadow-lg hover:bg-airbnb-red/90 transition-all z-50"
+        onClick={handleChatbotToggle}
+      >
+        <MessageCircle size={24} />
+      </button>
+
       {/* Chatbot */}
-      {showChatbot && <Chatbot onClose={handleChatbotToggle} />}
-      {!showChatbot && <Chatbot isFloating onClose={handleChatbotToggle} />}
-      
+      {showChatbot && (
+        
+          <Chatbot onClose={handleChatbotToggle} />
+
+      )}
       {/* Featured Properties */}
       <section className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">

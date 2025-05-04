@@ -1,9 +1,16 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, GlobeIcon } from 'lucide-react';
+import { Search, GlobeIcon, MessageCircle } from 'lucide-react';
 import UserMenu from './UserMenu';
 
 const Navbar = () => {
+  const [showChatbot, setShowChatbot] = useState(false);
+  
+  const handleChatbotToggle = () => {
+    setShowChatbot(prev => !prev);
+  };
+  
+
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   
@@ -58,6 +65,7 @@ const Navbar = () => {
 
           {/* Right Navigation */}
           <div className="flex items-center">
+                
             <Link 
               to="/host"
               className="hidden sm:block rounded-full px-4 py-2 text-sm font-medium transition hover:bg-airbnb-light/30"
