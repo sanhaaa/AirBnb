@@ -36,11 +36,11 @@ This project introduces two core functionalities to a mocked Airbnb interface:
 
 1.  Clone the repository:
     ```bash
-    git clone []
+    git clone [https://github.com/sanhaaa/AirBnb.git]
     ```
 2.  Navigate to the project directory:
     ```bash
-    cd [https://github.com/sanhaaa/AirBnb.git]
+    cd [AirBnb]
     ```
 3.  Install dependencies:
     ```bash
