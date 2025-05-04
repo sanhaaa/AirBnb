@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    @apply text-airbnb-dark antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-airbnb-red to-airbnb-yellow text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-airbnb-dark px-6 py-3 rounded-lg font-medium border border-airbnb-light hover:border-airbnb-dark transition-colors;
+  }
+  
+  .input-field {
+    @apply w-full border border-airbnb-light rounded-lg p-4 outline-none focus:ring-2 focus:ring-airbnb-teal;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-card overflow-hidden;
+  }
+  
+  .navlink {
+    @apply text-airbnb-medium hover:text-airbnb-dark transition-colors;
+  }
+  
+  .navlink.active {
+    @apply text-airbnb-dark;
+  }
+}
+
+/* Custom styles for scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-airbnb-medium/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-airbnb-medium/50;
+}
+
+/* Animation for page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
