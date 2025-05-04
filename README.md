@@ -40,7 +40,7 @@ This project introduces two core functionalities to a mocked Airbnb interface:
     ```
 2.  Navigate to the project directory:
     ```bash
-    cd []
+    cd [https://github.com/sanhaaa/AirBnb.git]
     ```
 3.  Install dependencies:
     ```bash
