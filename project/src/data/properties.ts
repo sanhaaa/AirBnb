@@ -63,10 +63,13 @@ const properties: Property[] = [
     },
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
-      { id: 'a2', name: 'Air conditioning', icon: 'wind', category: 'basic' },
-      { id: 'a3', name: 'Kitchen', icon: 'utensils', category: 'basic' },
+      { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
+      { id: 'a3', name: 'Kitchen', icon: 'kitchen', category: 'basic' },
       { id: 'a4', name: 'Pool', icon: 'pool', category: 'features' },
-      { id: 'a5', name: 'Free parking', icon: 'parking', category: 'features' }
+      { id: 'a5', name: 'Parking', icon: 'parking', category: 'features' },
+      { id: 'a6', name: 'TV', icon: 'tv', category: 'basic' },
+      { id: 'a7', name: 'Heating', icon: 'heating', category: 'basic' },
+      { id: 'a8', name: 'Breakfast', icon: 'breakfast', category: 'features' }
     ],
     maxGuests: 6,
     bedrooms: 3,
@@ -165,9 +168,9 @@ const properties: Property[] = [
     },
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
-      { id: 'a2', name: 'Air conditioning', icon: 'wind', category: 'basic' },
-      { id: 'a3', name: 'Breakfast', icon: 'coffee', category: 'features' },
-      { id: 'a6', name: 'Rooftop terrace', icon: 'sun', category: 'features' }
+      { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
+      { id: 'a8', name: 'Breakfast', icon: 'breakfast', category: 'features' },
+      { id: 'a6', name: 'TV', icon: 'tv', category: 'basic' }
     ],
     maxGuests: 4,
     bedrooms: 2,
@@ -257,7 +260,7 @@ const properties: Property[] = [
     },
     amenities: [
       { id: 'a7', name: 'All meals included', icon: 'utensils', category: 'features' },
-      { id: 'a8', name: 'Air conditioning', icon: 'wind', category: 'basic' },
+      { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
       { id: 'a9', name: 'Private deck', icon: 'sun-deck', category: 'features' }
     ],
     maxGuests: 4,
@@ -348,8 +351,8 @@ const properties: Property[] = [
     },
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
-      { id: 'a2', name: 'Air conditioning', icon: 'wind', category: 'basic' },
-      { id: 'a3', name: 'Kitchen', icon: 'utensils', category: 'basic' },
+      { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
+      { id: 'a3', name: 'Kitchen', icon: 'kitchen', category: 'basic' },
       { id: 'a10', name: 'Balcony', icon: 'home', category: 'features' }
     ],
     maxGuests: 3,
@@ -441,9 +444,9 @@ const properties: Property[] = [
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
       { id: 'a11', name: 'Fireplace', icon: 'flame', category: 'features' },
-      { id: 'a3', name: 'Kitchen', icon: 'utensils', category: 'basic' },
+      { id: 'a3', name: 'Kitchen', icon: 'kitchen', category: 'basic' },
       { id: 'a12', name: 'Mountain view', icon: 'mountain', category: 'features' },
-      { id: 'a5', name: 'Free parking', icon: 'parking', category: 'features' }
+      { id: 'a5', name: 'Parking', icon: 'parking', category: 'features' }
     ],
     maxGuests: 4,
     bedrooms: 2,
@@ -533,8 +536,8 @@ const properties: Property[] = [
     },
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
-      { id: 'a2', name: 'Air conditioning', icon: 'wind', category: 'basic' },
-      { id: 'a3', name: 'Kitchen', icon: 'utensils', category: 'basic' },
+      { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
+      { id: 'a3', name: 'Kitchen', icon: 'kitchen', category: 'basic' },
       { id: 'a4', name: 'Gym', icon: 'dumbbell', category: 'features' },
       { id: 'a13', name: 'Doorman', icon: 'shield', category: 'features' }
     ],
@@ -621,7 +624,7 @@ const properties: Property[] = [
     },
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
-      { id: 'a2', name: 'Air conditioning', icon: 'wind', category: 'basic' },
+      { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
       { id: 'a4', name: 'Pool', icon: 'pool', category: 'features' },
       { id: 'a5', name: 'Beach access', icon: 'beach', category: 'features' }
     ],
@@ -708,7 +711,7 @@ const properties: Property[] = [
     },
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
-      { id: 'a2', name: 'Air conditioning', icon: 'wind', category: 'basic' },
+      { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
       { id: 'a3', name: 'Restaurant', icon: 'utensils', category: 'features' },
       { id: 'a14', name: 'Lake view', icon: 'water', category: 'features' },
       { id: 'a15', name: 'Heritage tours', icon: 'landmark', category: 'features' }

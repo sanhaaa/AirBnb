@@ -52,18 +52,30 @@ const HomePage = () => {
       <section className="pt-6 bg-white z-30 border-b border-airbnb-light">
         {/* BnBee Bot Entry */}
         <div
-          className="flex flex-col items-center justify-center bg-gradient-to-r from-airbnb-red/10 to-airbnb-purple/10 border border-airbnb-light rounded-xl p-6 shadow-md cursor-pointer hover:shadow-lg transition-all max-w-2xl mx-auto my-4"
+          className="flex flex-col items-center justify-center bg-gradient-to-br from-[#fee2e2] to-[#ffe4e6] border border-airbnb-red/20 rounded-xl px-16 py-8 shadow-[0_8px_30px_rgba(244,63,94,0.12)] backdrop-blur-sm cursor-pointer hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 w-[800px] mx-auto my-4 group relative overflow-hidden"
           onClick={handleChatbotToggle}
         >
-          <div className="text-lg md:text-xl font-semibold text-airbnb-dark mb-2 text-center">
-            Come, let's plan your entire trip/stay with <span className="text-airbnb-red">BnBee bot!</span>
+          <div className="absolute inset-0 bg-gradient-to-r from-airbnb-red/10 to-pink-200/40 animate-gradient-xy"></div>
+          <div className="text-xl md:text-2xl font-bold text-gray-800 mb-4 text-center relative">
+            <span className="relative z-10">
+              Come, let's plan your entire trip/stay with{' '}
+              <span className="bg-gradient-to-r from-airbnb-red to-[#E31C5F] bg-clip-text text-transparent font-extrabold animate-pulse">
+                BnBee bot!
+              </span>
+            </span>
           </div>
-          <div className="text-sm md:text-base text-airbnb-medium text-center">
-            Your ultimate travel assistant! BnBee can help you plan trips, find travel hacks, discover the best food spots, book cheap flights, and even create personalized travel itineraries. Experience destinations virtually with our VR feature!
-            <br /><br />
-            👉 Just click me or tap the BnBee icon in the bottom-right corner to get started!<br />
-            I'm always here to buzz in with smart suggestions and smooth planning 🐝✨
+          <div className="text-sm md:text-base text-gray-600 text-center space-y-4 relative z-10">
+            <p className="leading-relaxed bg-white/50 p-4 rounded-lg backdrop-blur-sm">
+              Your ultimate travel assistant! BnBee can help you plan trips, find travel hacks, discover the best food spots, book cheap flights, and even create personalized travel itineraries. Experience destinations virtually with our VR feature!
+            </p>
+            <p className="mt-4 font-medium">
+              👉 Just click me or tap the BnBee icon in the bottom-right corner to get started!<br />
+              <span className="text-airbnb-red font-semibold">
+                I'm always here to buzz in with smart suggestions and smooth planning 🐝✨
+              </span>
+            </p>
           </div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-airbnb-red/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl blur-lg group-hover:animate-pulse"></div>
         </div>
       </section>
       
@@ -263,9 +275,12 @@ const HomePage = () => {
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Earn extra income by sharing your space with travelers from around the world.
           </p>
-          <button className="bg-white text-airbnb-red hover:bg-white/90 font-medium px-8 py-3 rounded-lg shadow-lg transition-colors">
+          <Link 
+            to="/host/homes"
+            className="bg-white text-airbnb-red hover:bg-white/90 font-medium px-8 py-3 rounded-lg shadow-lg transition-colors"
+          >
             Learn more about hosting
-          </button>
+          </Link>
         </div>
         
         <div className="absolute right-0 bottom-0 h-full w-1/3 overflow-hidden opacity-20">

@@ -29,6 +29,21 @@ export default {
         card: '0 6px 16px rgba(0, 0, 0, 0.12)',
         nav: '0 2px 20px rgba(0, 0, 0, 0.08)',
       },
+      animation: {
+        'gradient-xy': 'gradient-xy 15s ease infinite',
+      },
+      keyframes: {
+        'gradient-xy': {
+          '0%, 100%': {
+            'background-size': '400% 400%',
+            'background-position': 'left center'
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center'
+          }
+        }
+      }
     },
   },
   plugins: [],

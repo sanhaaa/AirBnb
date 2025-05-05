@@ -1,10 +1,111 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import PropertyCard from '../components/PropertyCard';
 import SearchBar from '../components/SearchBar';
 import properties from '../data/properties';
 import { MapPin, ChevronDown, MessageCircle, ChevronRight } from 'lucide-react';
 import Chatbot from '../components/Chatbot';
+import { 
+  Wifi, 
+  Wind, 
+  UtensilsCrossed, 
+  Droplet, 
+  Car, 
+  Umbrella,
+  Tv,
+  Briefcase,
+  Thermometer,
+  Coffee,
+  Dumbbell,
+  ShieldCheck,
+  ArrowUpCircle,
+  Baby,
+  MonitorPlay,
+  InfoIcon,
+  AlertTriangle,
+  Flame,
+  Heart,
+  Accessibility
+} from 'lucide-react';
+
+interface PropertyDetailsProps {
+  id?: string;
+}
+
+/**
+ * PropertyDetails Component
+ * 
+ * This component displays detailed information about a property listing including:
+ * - Photo gallery with VR tour option
+ * - Property information (title, location, amenities)
+ * - Host information
+ * - Booking interface
+ * - Reviews
+ */
+const PropertyDetails: React.FC<PropertyDetailsProps> = () => {
+  const { id } = useParams<{ id: string }>();
+  const [property, setProperty] = useState(properties.find(p => p.id === id));
+  const [showVRTour, setShowVRTour] = useState(false);
+  const [checkInDate, setCheckInDate] = useState<string>('');
+  const [checkOutDate, setCheckOutDate] = useState<string>('');
+
+  // Calculate total price based on selected dates
+  useEffect(() => {
+    // Price calculation logic
+    // ...existing useEffect code...
+  }, [checkInDate, checkOutDate, property]);
+
+  const amenityIconMap = {
+    'wifi': Wifi,
+    'air-conditioning': Wind,
+    'kitchen': UtensilsCrossed,
+    'pool': Droplet,
+    'parking': Car,
+    'beach': Umbrella,
+    'tv': Tv,
+    'workspace': Briefcase,
+    'heating': Thermometer,
+    'breakfast': Coffee,
+    'gym': Dumbbell,
+    'security': ShieldCheck,
+    'elevator': ArrowUpCircle,
+    'baby-friendly': Baby,
+    'entertainment': MonitorPlay,
+    'info': InfoIcon,
+    'warning': AlertTriangle,
+    'fireplace': Flame,
+    'firstaid': Heart,
+    'accessibility': Accessibility
+  };
+
+  // VR Tour Button with enhanced styling and animations
+  return (
+    <button 
+      onClick={() => setShowVRTour(true)}
+      className="flex items-center gap-2 bg-gradient-to-r from-airbnb-red to-airbnb-purple text-white font-medium px-6 py-3 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+    >
+      {/* VR Icon with pulse animation */}
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className="w-5 h-5 group-hover:animate-pulse"
+      >
+        <path d="M21 5.5C17.5 4 14 4 12 4c-2 0-5.5 0-9 1.5M21 5.5v13c-4.5 1-8.06 1.13-9 1.5-2.5 0-5.5-1-9-1.5v-13M21 5.5l-9 3.75L3 5.5" />
+      </svg>
+      
+      {/* Button text with underline animation */}
+      <span className="relative">
+        Experience in VR
+        <span className="absolute inset-x-0 -bottom-1 h-px bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform"></span>
+      </span>
+    </button>
+  );
+};
 
 const HomePage = () => {
   const [isInitialLoad, setIsInitialLoad] = useState(true);

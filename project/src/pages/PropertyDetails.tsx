@@ -1,13 +1,90 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   ChevronLeft, Star, Share, Heart, 
   MapPin, Users, Bed, Bath, 
   Home, Maximize, Calendar, Award,
-  Check, X
+  Check, X,
+  Wifi, 
+  Wind, 
+  UtensilsCrossed, 
+  Droplet, 
+  Car, 
+  Umbrella,
+  Tv,
+  Thermometer,
+  Coffee,
+  Dumbbell,
+  ShieldCheck,
+  ArrowUpCircle,
+  Baby,
+  MonitorPlay
 } from 'lucide-react';
 import properties from '../data/properties';
 import VRTourViewer from '../components/VRTourViewer';
+
+const MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
+type StateKey = 'Goa' | 'Kerala' | 'Rajasthan' | 'Himachal Pradesh' | 'Maharashtra' | 'default';
+
+const stateBackgroundMap: Record<StateKey, string> = {
+  'Goa': 'https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg',
+  'Kerala': 'https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg',
+  'Rajasthan': 'https://images.pexels.com/photos/3581364/pexels-photo-3581364.jpeg',
+  'Himachal Pradesh': 'https://images.pexels.com/photos/1586298/pexels-photo-1586298.jpeg',
+  'Maharashtra': 'https://images.pexels.com/photos/1701539/pexels-photo-1701539.jpeg',
+  'default': 'https://images.pexels.com/photos/2846217/pexels-photo-2846217.jpeg'
+};
+
+const getStateBackground = (state: string): string => {
+  return state in stateBackgroundMap 
+    ? stateBackgroundMap[state as StateKey]
+    : stateBackgroundMap.default;
+};
+
+type AmenityIconKey = 
+  | 'wifi' 
+  | 'air-conditioning' 
+  | 'kitchen' 
+  | 'pool' 
+  | 'parking' 
+  | 'beach' 
+  | 'tv' 
+  | 'heating' 
+  | 'breakfast' 
+  | 'gym' 
+  | 'security' 
+  | 'elevator' 
+  | 'baby-items' 
+  | 'entertainment';
+
+const amenityIconMap: Record<AmenityIconKey, ReactElement> = {
+  'wifi': <Wifi className="w-6 h-6 text-airbnb-dark" />,
+  'air-conditioning': <Wind className="w-6 h-6 text-airbnb-dark" />,
+  'kitchen': <UtensilsCrossed className="w-6 h-6 text-airbnb-dark" />,
+  'pool': <Droplet className="w-6 h-6 text-airbnb-dark" />,
+  'parking': <Car className="w-6 h-6 text-airbnb-dark" />,
+  'beach': <Umbrella className="w-6 h-6 text-airbnb-dark" />,
+  'tv': <Tv className="w-6 h-6 text-airbnb-dark" />,
+  'heating': <Thermometer className="w-6 h-6 text-airbnb-dark" />,
+  'breakfast': <Coffee className="w-6 h-6 text-airbnb-dark" />,
+  'gym': <Dumbbell className="w-6 h-6 text-airbnb-dark" />,
+  'security': <ShieldCheck className="w-6 h-6 text-airbnb-dark" />,
+  'elevator': <ArrowUpCircle className="w-6 h-6 text-airbnb-dark" />,
+  'baby-items': <Baby className="w-6 h-6 text-airbnb-dark" />,
+  'entertainment': <MonitorPlay className="w-6 h-6 text-airbnb-dark" />
+};
+
+const getAmenityIcon = (iconKey: string) => {
+  if (isValidAmenityKey(iconKey)) {
+    return amenityIconMap[iconKey];
+  }
+  return <UtensilsCrossed className="w-6 h-6 text-airbnb-dark" />;
+};
+
+const isValidAmenityKey = (key: string): key is AmenityIconKey => {
+  return key in amenityIconMap;
+};
 
 const PropertyDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -183,12 +260,15 @@ const PropertyDetails = () => {
             {property.vrTour.enabled && (
               <button 
                 onClick={() => setShowVRTour(true)}
-                className="flex items-center gap-2 bg-white hover:bg-white/90 text-airbnb-dark font-medium px-4 py-2 rounded-lg shadow-lg transition-colors"
+                className="flex items-center gap-2 bg-gradient-to-r from-airbnb-red to-airbnb-purple text-white font-medium px-6 py-3 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 group-hover:animate-pulse">
                   <path d="M21 5.5C17.5 4 14 4 12 4c-2 0-5.5 0-9 1.5M21 5.5v13c-4.5 1-8.06 1.13-9 1.5-2.5 0-5.5-1-9-1.5v-13M21 5.5l-9 3.75L3 5.5" />
                 </svg>
-                <span>Experience in VR</span>
+                <span className="relative">
+                  Experience in VR
+                  <span className="absolute inset-x-0 -bottom-1 h-px bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform"></span>
+                </span>
               </button>
             )}
             
@@ -276,11 +356,7 @@ const PropertyDetails = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {property.amenities.slice(0, 8).map(amenity => (
                   <div key={amenity.id} className="flex items-center gap-4">
-                    <img 
-                      src={`https://a0.muscache.com/pictures/amenities/${amenity.icon}.svg`} 
-                      alt={amenity.name}
-                      className="w-6 h-6"
-                    />
+                    {getAmenityIcon(amenity.icon)}
                     <span>{amenity.name}</span>
                   </div>
                 ))}
@@ -362,12 +438,36 @@ const PropertyDetails = () => {
             <div className="border-b border-airbnb-light pb-6 mb-6">
               <h2 className="text-xl font-medium mb-4">Where you'll be</h2>
               
-              <div className="rounded-xl overflow-hidden h-80 mb-4">
-                <img 
-                  src={`https://maps.googleapis.com/maps/api/staticmap?center=${property.location.lat},${property.location.lng}&zoom=14&size=800x400&markers=color:red%7C${property.location.lat},${property.location.lng}&key=YOUR_API_KEY`} 
-                  alt="Map location"
-                  className="w-full h-full object-cover"
-                />
+              <div className="rounded-xl overflow-hidden h-80 mb-4 relative">
+                {MAPS_API_KEY ? (
+                  <img 
+                    src={`https://maps.googleapis.com/maps/api/staticmap?center=${property.location.lat},${property.location.lng}&zoom=14&size=800x400&scale=2&markers=color:red%7C${property.location.lat},${property.location.lng}&key=${MAPS_API_KEY}`} 
+                    alt={`Map showing location in ${property.location.city}`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = getStateBackground(property.location.state);
+                    }}
+                  />
+                ) : (
+                  <div 
+                    className="w-full h-full flex items-center justify-center"
+                    style={{
+                      backgroundImage: `url(${getStateBackground(property.location.state)})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
+                  >
+                    <div className="bg-black/50 p-4 rounded-lg backdrop-blur-sm">
+                      <MapPin className="w-8 h-8 text-white mx-auto mb-2" />
+                      <h3 className="font-medium text-white">
+                        {property.location.city}, {property.location.state}
+                      </h3>
+                      <p className="text-sm text-white/80 mt-1">
+                        Exact location provided after booking
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
               
               <h3 className="font-medium mb-2">{property.location.city}, {property.location.state}, {property.location.country}</h3>

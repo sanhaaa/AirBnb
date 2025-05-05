@@ -39,7 +39,7 @@ export interface Amenity {
   id: string;
   name: string;
   icon: string;
-  category: 'basic' | 'features' | 'safety' | 'accessibility';
+  category: 'basic' | 'features';
 }
 
 export interface PropertyImage {

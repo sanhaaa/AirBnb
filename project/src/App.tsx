@@ -10,6 +10,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const SearchResults = lazy(() => import('./pages/SearchResults'));
 const PropertyDetails = lazy(() => import('./pages/PropertyDetails'));
 const VRGuide = lazy(() => import('./pages/vrguide'));
+const HostingPage = lazy(() => import('./pages/HostingPage'));
 // Loading component
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -45,6 +46,7 @@ function App() {
             <Route path="/search" element={<SearchResults />} />
             <Route path="/property/:id" element={<PropertyDetails />} />
             <Route path="/vrguide" element={<VRGuide />} />
+            <Route path="/host/homes" element={<HostingPage />} />
           </Routes>
         </Suspense>
       </main>

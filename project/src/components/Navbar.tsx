@@ -61,7 +61,7 @@ const Navbar = () => {
           <div className="flex items-center">
                 
             <Link 
-              to="/host"
+              to="/host/homes"
               className="hidden sm:block rounded-full px-4 py-2 text-sm font-medium transition hover:bg-airbnb-light/30"
             >
               <span className={isScrolled || location.pathname !== '/' ? 'text-airbnb-dark' : 'text-white'}>

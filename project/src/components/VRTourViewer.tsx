@@ -1,16 +1,39 @@
+/**
+ * VRTourViewer Component
+ * 
+ * A React Three Fiber based VR viewer that enables:
+ * - 360-degree panoramic view of properties
+ * - Interactive controls for navigation
+ * - Fullscreen mode
+ * - Touch and mouse controls
+ * - Multiple panorama support with navigation
+ */
+
 import { useState, useRef, Suspense } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { TextureLoader } from 'three';
+import { TextureLoader, Texture, Mesh } from 'three';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { ArrowLeftCircle, ArrowRightCircle, Maximize2, Minimize2 } from 'lucide-react';
 
+// Props interfaces
 interface VRTourViewerProps {
   panoramas: string[];
 }
 
-// Sphere component for panorama
-const PanoramaSphere = ({ texture }) => {
-  const mesh = useRef();
+interface PanoramaSphereProps {
+  texture: Texture;
+}
+
+interface PanoramaViewProps {
+  url: string;
+}
+
+/**
+ * PanoramaSphere Component
+ * Renders a spherical mesh with the panorama texture mapped to it
+ */
+const PanoramaSphere = ({ texture }: PanoramaSphereProps) => {
+  const mesh = useRef<Mesh>(null);
   
   useFrame(() => {
     if (mesh.current) {
@@ -26,7 +49,10 @@ const PanoramaSphere = ({ texture }) => {
   );
 };
 
-// Main VR Component
+/**
+ * Main VR Component
+ * Handles the VR tour interface and controls
+ */
 const VRTourViewer = ({ panoramas }: VRTourViewerProps) => {
   const [currentPanoIndex, setCurrentPanoIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -115,7 +141,7 @@ const VRTourViewer = ({ panoramas }: VRTourViewerProps) => {
 };
 
 // Component to load and display panorama
-const PanoramaView = ({ url }) => {
+const PanoramaView = ({ url }: PanoramaViewProps) => {
   const texture = useLoader(TextureLoader, url);
   
   return (
