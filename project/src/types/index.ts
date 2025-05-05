@@ -35,11 +35,35 @@ export interface Review {
   date: string;
 }
 
+export type AmenityCategory = 'basic' | 'features' | 'safety' | 'location';
+
+export type AmenityIconType = 
+  | 'wifi' 
+  | 'air-conditioning' 
+  | 'kitchen' 
+  | 'pool' 
+  | 'parking' 
+  | 'beach' 
+  | 'tv' 
+  | 'heating' 
+  | 'breakfast' 
+  | 'gym' 
+  | 'security' 
+  | 'elevator' 
+  | 'baby-items' 
+  | 'entertainment'
+  | 'workspace'
+  | 'firstaid'
+  | 'balcony'
+  | 'mountain-view'
+  | 'garden'
+  | 'washer';
+
 export interface Amenity {
   id: string;
   name: string;
-  icon: string;
-  category: 'basic' | 'features';
+  icon: AmenityIconType;
+  category: AmenityCategory;
 }
 
 export interface PropertyImage {

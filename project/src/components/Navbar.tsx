@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, GlobeIcon } from 'lucide-react';
+import { Search, GlobeIcon, Heart } from 'lucide-react';
 import UserMenu from './UserMenu';
+import { useWishlistStore } from '../stores/wishlistStore';
 
 const Navbar = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const wishlistedCount = useWishlistStore(state => state.wishlistedProperties.length);
   
   // Add scroll event listener
   window.addEventListener('scroll', () => {
@@ -68,6 +70,23 @@ const Navbar = () => {
                 Airbnb your home
               </span>
             </Link>
+
+            {/* Add Wishlist Link */}
+            <Link
+              to="/wishlist"
+              className="relative rounded-full p-2 transition hover:bg-airbnb-light/30 mx-1"
+            >
+              <Heart 
+                size={20}
+                className={isScrolled || location.pathname !== '/' ? 'text-airbnb-dark' : 'text-white'}
+              />
+              {wishlistedCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-airbnb-red text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                  {wishlistedCount}
+                </span>
+              )}
+            </Link>
+
             <button className="rounded-full p-2 transition hover:bg-airbnb-light/30 mx-1">
               <GlobeIcon 
                 size={18} 

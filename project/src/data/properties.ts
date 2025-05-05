@@ -1,4 +1,4 @@
-import { Property } from '../types';
+import { Property, Amenity } from '../types';
 
 const properties: Property[] = [
   {
@@ -64,13 +64,15 @@ const properties: Property[] = [
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
       { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
-      { id: 'a3', name: 'Kitchen', icon: 'kitchen', category: 'basic' },
-      { id: 'a4', name: 'Pool', icon: 'pool', category: 'features' },
-      { id: 'a5', name: 'Parking', icon: 'parking', category: 'features' },
-      { id: 'a6', name: 'TV', icon: 'tv', category: 'basic' },
+      { id: 'a3', name: 'Full kitchen', icon: 'kitchen', category: 'basic' },
+      { id: 'a4', name: 'Swimming pool', icon: 'pool', category: 'features' },
+      { id: 'a5', name: 'Free parking', icon: 'parking', category: 'basic' },
+      { id: 'a6', name: 'Smart TV', icon: 'tv', category: 'features' },
       { id: 'a7', name: 'Heating', icon: 'heating', category: 'basic' },
-      { id: 'a8', name: 'Breakfast', icon: 'breakfast', category: 'features' }
-    ],
+      { id: 'a8', name: 'Breakfast included', icon: 'breakfast', category: 'features' },
+      { id: 'a9', name: 'Gym access', icon: 'gym', category: 'features' },
+      { id: 'a10', name: '24/7 security', icon: 'security', category: 'safety' }
+    ] as Amenity[],
     maxGuests: 6,
     bedrooms: 3,
     beds: 4,
@@ -85,7 +87,7 @@ const properties: Property[] = [
         userAvatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
         rating: 5,
         comment: 'Absolutely stunning villa! We loved the pool and proximity to the beach. Priya was an excellent host.',
-        date: '2023-10-15'
+        date: '2023-12-15'
       },
       {
         id: 'r2',
@@ -95,6 +97,24 @@ const properties: Property[] = [
         rating: 4,
         comment: 'Beautiful place and great location. Kitchen was well stocked. Only issue was the weak wifi signal.',
         date: '2023-09-22'
+      },
+      {
+        id: 'r3',
+        userId: 'u3',
+        userName: 'Sarah J',
+        userAvatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
+        rating: 5,
+        comment: 'Beautiful property with amazing views. The host was very responsive and helpful.',
+        date: '2023-12-10'
+      },
+      {
+        id: 'r10',
+        userId: 'u10',
+        userName: 'Alex K',
+        userAvatar: 'https://images.pexels.com/photos/1680175/pexels-photo-1680175.jpeg',
+        rating: 4,
+        comment: 'Great location and amenities. Would definitely recommend!',
+        date: '2023-11-28'
       }
     ],
     hasWifi: true,
@@ -169,9 +189,9 @@ const properties: Property[] = [
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
       { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
-      { id: 'a8', name: 'Breakfast', icon: 'breakfast', category: 'features' },
-      { id: 'a6', name: 'TV', icon: 'tv', category: 'basic' }
-    ],
+      { id: 'a8', name: 'Breakfast included', icon: 'breakfast', category: 'features' },
+      { id: 'a6', name: 'Smart TV', icon: 'tv', category: 'features' }
+    ] as Amenity[],
     maxGuests: 4,
     bedrooms: 2,
     beds: 2,
@@ -262,7 +282,7 @@ const properties: Property[] = [
       { id: 'a7', name: 'All meals included', icon: 'utensils', category: 'features' },
       { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
       { id: 'a9', name: 'Private deck', icon: 'sun-deck', category: 'features' }
-    ],
+    ] as Amenity[],
     maxGuests: 4,
     bedrooms: 2,
     beds: 2,
@@ -352,9 +372,9 @@ const properties: Property[] = [
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
       { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
-      { id: 'a3', name: 'Kitchen', icon: 'kitchen', category: 'basic' },
+      { id: 'a3', name: 'Full kitchen', icon: 'kitchen', category: 'basic' },
       { id: 'a10', name: 'Balcony', icon: 'home', category: 'features' }
-    ],
+    ] as Amenity[],
     maxGuests: 3,
     bedrooms: 1,
     beds: 1,
@@ -444,10 +464,10 @@ const properties: Property[] = [
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
       { id: 'a11', name: 'Fireplace', icon: 'flame', category: 'features' },
-      { id: 'a3', name: 'Kitchen', icon: 'kitchen', category: 'basic' },
+      { id: 'a3', name: 'Full kitchen', icon: 'kitchen', category: 'basic' },
       { id: 'a12', name: 'Mountain view', icon: 'mountain', category: 'features' },
-      { id: 'a5', name: 'Parking', icon: 'parking', category: 'features' }
-    ],
+      { id: 'a5', name: 'Free parking', icon: 'parking', category: 'basic' }
+    ] as Amenity[],
     maxGuests: 4,
     bedrooms: 2,
     beds: 2,
@@ -537,10 +557,10 @@ const properties: Property[] = [
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
       { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
-      { id: 'a3', name: 'Kitchen', icon: 'kitchen', category: 'basic' },
-      { id: 'a4', name: 'Gym', icon: 'dumbbell', category: 'features' },
-      { id: 'a13', name: 'Doorman', icon: 'shield', category: 'features' }
-    ],
+      { id: 'a3', name: 'Full kitchen', icon: 'kitchen', category: 'basic' },
+      { id: 'a4', name: 'Gym access', icon: 'dumbbell', category: 'features' },
+      { id: 'a13', name: '24/7 security', icon: 'shield', category: 'safety' }
+    ] as Amenity[],
     maxGuests: 4,
     bedrooms: 2,
     beds: 2,
@@ -625,9 +645,9 @@ const properties: Property[] = [
     amenities: [
       { id: 'a1', name: 'Wifi', icon: 'wifi', category: 'basic' },
       { id: 'a2', name: 'Air conditioning', icon: 'air-conditioning', category: 'basic' },
-      { id: 'a4', name: 'Pool', icon: 'pool', category: 'features' },
+      { id: 'a4', name: 'Swimming pool', icon: 'pool', category: 'features' },
       { id: 'a5', name: 'Beach access', icon: 'beach', category: 'features' }
-    ],
+    ] as Amenity[],
     maxGuests: 8,
     bedrooms: 4,
     beds: 5,
@@ -715,7 +735,7 @@ const properties: Property[] = [
       { id: 'a3', name: 'Restaurant', icon: 'utensils', category: 'features' },
       { id: 'a14', name: 'Lake view', icon: 'water', category: 'features' },
       { id: 'a15', name: 'Heritage tours', icon: 'landmark', category: 'features' }
-    ],
+    ] as Amenity[],
     maxGuests: 6,
     bedrooms: 3,
     beds: 3,

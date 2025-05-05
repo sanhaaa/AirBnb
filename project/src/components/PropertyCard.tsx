@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Heart } from 'lucide-react';
 import { Property } from '../types';
+import { useWishlistStore } from '../stores/wishlistStore';
 
 interface PropertyCardProps {
   property: Property;
@@ -10,7 +11,7 @@ interface PropertyCardProps {
 
 const PropertyCard = ({ property, className = '' }: PropertyCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isWishlisted, setIsWishlisted] = useState(false);
+  const { isWishlisted, toggleWishlist } = useWishlistStore();
   
   const nextImage = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -32,10 +33,10 @@ const PropertyCard = ({ property, className = '' }: PropertyCardProps) => {
     }
   };
   
-  const toggleWishlist = (e: React.MouseEvent) => {
+  const handleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsWishlisted(!isWishlisted);
+    toggleWishlist(property);
   };
   
   return (
@@ -84,12 +85,16 @@ const PropertyCard = ({ property, className = '' }: PropertyCardProps) => {
         
         {/* Wishlist button */}
         <button 
-          onClick={toggleWishlist}
-          className="absolute top-3 right-3 p-1"
-          aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+          onClick={handleWishlist}
+          className="absolute top-3 right-3 p-2 rounded-full hover:bg-black/10 transition"
+          aria-label={isWishlisted(property.id) ? "Remove from wishlist" : "Add to wishlist"}
         >
           <Heart 
-            className={`h-6 w-6 ${isWishlisted ? 'fill-airbnb-red text-airbnb-red' : 'text-white stroke-2'}`} 
+            className={`h-6 w-6 ${
+              isWishlisted(property.id) 
+                ? 'fill-airbnb-red text-airbnb-red' 
+                : 'text-white stroke-2'
+            }`} 
           />
         </button>
         

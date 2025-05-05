@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import properties from '../data/properties';
 import VRTourViewer from '../components/VRTourViewer';
+import { getAmenityIcon } from '../utils/amenityIcons';
 
 const MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -75,13 +76,6 @@ const amenityIconMap: Record<AmenityIconKey, ReactElement> = {
   'entertainment': <MonitorPlay className="w-6 h-6 text-airbnb-dark" />
 };
 
-const getAmenityIcon = (iconKey: string) => {
-  if (isValidAmenityKey(iconKey)) {
-    return amenityIconMap[iconKey];
-  }
-  return <UtensilsCrossed className="w-6 h-6 text-airbnb-dark" />;
-};
-
 const isValidAmenityKey = (key: string): key is AmenityIconKey => {
   return key in amenityIconMap;
 };
@@ -95,6 +89,7 @@ const PropertyDetails = () => {
   const [checkOutDate, setCheckOutDate] = useState('');
   const [guestCount, setGuestCount] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
   
   const [totalPrice, setTotalPrice] = useState(0);
   const [nightsCount, setNightsCount] = useState(0);
@@ -186,6 +181,51 @@ const PropertyDetails = () => {
             </div>
             
             <VRTourViewer panoramas={property.vrTour.panoramas || []} />
+          </div>
+        </div>
+      )}
+
+      {/* Reviews Modal */}
+      {showAllReviews && (
+        <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
+          <div className="p-4">
+            <button 
+              onClick={() => setShowAllReviews(false)}
+              className="flex items-center font-medium hover:bg-airbnb-light/30 rounded-full px-4 py-2"
+            >
+              <ChevronLeft className="mr-2" size={18} />
+              <span>Back to property</span>
+            </button>
+            
+            <div className="max-w-4xl mx-auto py-8">
+              <div className="flex items-center gap-2 mb-8">
+                <Star className="h-6 w-6 fill-current" />
+                <span className="text-2xl font-medium">
+                  {property.rating} · {property.reviewCount} reviews
+                </span>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {property.reviews.map(review => (
+                  <div key={review.id} className="flex flex-col border-b border-airbnb-light pb-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-full overflow-hidden">
+                        <img 
+                          src={review.userAvatar} 
+                          alt={review.userName}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-medium">{review.userName}</h4>
+                        <p className="text-sm text-airbnb-medium">{review.date}</p>
+                      </div>
+                    </div>
+                    <p className="text-airbnb-dark leading-relaxed">{review.comment}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -409,7 +449,8 @@ const PropertyDetails = () => {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                {property.reviews.map(review => (
+                {/* Show only first 6 reviews initially */}
+                {property.reviews.slice(0, 6).map(review => (
                   <div key={review.id} className="flex flex-col">
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-10 h-10 rounded-full overflow-hidden">
@@ -429,9 +470,14 @@ const PropertyDetails = () => {
                 ))}
               </div>
               
-              <button className="border border-airbnb-dark rounded-lg px-6 py-3 font-medium">
-                Show all {property.reviewCount} reviews
-              </button>
+              {property.reviews.length > 6 && (
+                <button 
+                  onClick={() => setShowAllReviews(true)}
+                  className="border border-airbnb-dark rounded-lg px-6 py-3 font-medium hover:bg-airbnb-light/10 transition"
+                >
+                  Show all {property.reviewCount} reviews
+                </button>
+              )}
             </div>
             
             {/* Location */}
